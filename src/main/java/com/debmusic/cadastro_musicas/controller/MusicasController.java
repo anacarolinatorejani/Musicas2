@@ -1,11 +1,8 @@
 package com.debmusic.cadastro_musicas.controller;
-
-import com.debmusic.cadastro_musicas.infrastructure.entitys.Musicas;
 import com.debmusic.cadastro_musicas.business.MusicasService;
+import com.debmusic.cadastro_musicas.infrastructure.entitys.Musicas;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/musicas")
@@ -17,32 +14,27 @@ public class MusicasController {
         this.service = service;
     }
 
-    @GetMapping
-    public ResponseEntity<List<Musicas>> listarMusicas() {
-        return ResponseEntity.ok(service.listarMusicas());
+    @PostMapping
+    public ResponseEntity<Void> salvar(@RequestBody Musicas musica) {
+        service.salvarMusica(musica);
+        return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/nome/{nome}")
+    @GetMapping("/{nome}")
     public ResponseEntity<Musicas> buscarPorNome(@PathVariable String nome) {
         return ResponseEntity.ok(service.buscarPorNome(nome));
     }
 
-    @PostMapping
-    public ResponseEntity<Musicas> salvarMusica(@RequestBody Musicas musica) {
-        return ResponseEntity.ok(service.salvarMusica(musica));
-    }
-
     @PutMapping("/{id}")
-    public ResponseEntity<Musicas> atualizarMusica(
+    public ResponseEntity<Void> atualizarPorId(
             @PathVariable Integer id,
             @RequestBody Musicas musica) {
 
-        return ResponseEntity.ok(
-                service.atualizarMusicaPorId(id, musica)
-        );
+        service.atualizarMusicaPorId(id, musica);
+        return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/nome/{nome}")
+    @DeleteMapping("/{nome}")
     public ResponseEntity<Void> deletarPorNome(@PathVariable String nome) {
         service.deletarPorNome(nome);
         return ResponseEntity.noContent().build();

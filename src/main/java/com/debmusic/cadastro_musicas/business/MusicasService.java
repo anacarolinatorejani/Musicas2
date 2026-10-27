@@ -1,11 +1,9 @@
+
 package com.debmusic.cadastro_musicas.business;
 
 import com.debmusic.cadastro_musicas.infrastructure.entitys.Musicas;
 import com.debmusic.cadastro_musicas.infrastructure.repository.MusicasRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class MusicasService {
@@ -16,30 +14,19 @@ public class MusicasService {
         this.repository = repository;
     }
 
-    public List<Musicas> listarMusicas() {
-        return repository.findAll();
-    }
-
-    public Musicas salvarMusica(Musicas musica) {
-        return repository.save(musica);
+    public void salvarMusica(Musicas musica) {
+        repository.save(musica);
     }
 
     public Musicas buscarPorNome(String nome) {
         return repository.findByNome(nome)
-                .orElseThrow(() ->
-                        new RuntimeException("Nome não encontrado"));
+                .orElseThrow(() -> new RuntimeException("Música não encontrada"));
     }
 
-    @Transactional
-    public void deletarPorNome(String nome) {
-        repository.deleteByNome(nome);
-    }
-
-    public Musicas atualizarMusicaPorId(Integer id, Musicas musica) {
+    public void atualizarMusicaPorId(Integer id, Musicas musica) {
 
         Musicas musicaEntity = repository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Música não encontrada"));
+                .orElseThrow(() -> new RuntimeException("Música não encontrada"));
 
         Musicas musicaAtualizada = Musicas.builder()
                 .id(musicaEntity.getId())
@@ -57,6 +44,10 @@ public class MusicasService {
                         : musicaEntity.getAno())
                 .build();
 
-        return repository.save(musicaAtualizada);
+        repository.save(musicaAtualizada);
+    }
+
+    public void deletarPorNome(String nome) {
+        repository.deleteByNome(nome);
     }
 }
