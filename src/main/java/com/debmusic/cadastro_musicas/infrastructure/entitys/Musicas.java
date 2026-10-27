@@ -17,10 +17,10 @@ public class Musicas {
     private Integer id;
     @Column(name = "nome", unique = true)
     private String nome;
-    @Column(name = "artista", unique = true)
+    @Column(name = "artista")
     private String artista;
-    @Column(name = "genero", unique = true)
+    @Column(name = "genero")
     private String genero;
-    @Column(name = "ano", unique = true)
+    @Column(name = "ano")
     private String ano;
 }
