@@ -58,7 +58,7 @@ async function cadastrarMusica(musica) {
     });
 
     if (!resposta.ok) {
-        throw new Error("Não foi possível cadastrar a música. Verifique o backend.");
+        throw new Error("Não foi possível cadastrar a música.");
     }
 
     mostrarMensagem("Música cadastrada com sucesso!", "sucesso");
