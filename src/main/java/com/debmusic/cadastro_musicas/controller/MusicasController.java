@@ -1,9 +1,17 @@
+
 package com.debmusic.cadastro_musicas.controller;
+
 import com.debmusic.cadastro_musicas.business.MusicasService;
 import com.debmusic.cadastro_musicas.infrastructure.entitys.Musicas;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = {
+        "http://localhost:63342",
+        "http://127.0.0.1:63342",
+        "http://localhost:5500",
+        "null"
+})
 @RestController
 @RequestMapping("/musicas")
 public class MusicasController {

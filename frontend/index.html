@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicApp | Gerenciador de Músicas</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header class="topo">
+    <div class="topo-conteudo">
+        <a class="logo" href="#">
+            <span class="logo-icone">♫</span>
+            <span>Music<span class="logo-destaque">App</span></span>
+        </a>
+        <p>Seu espaço para organizar músicas.</p>
+        <div class="equalizador" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="intro">
+        <div class="etiqueta"><span>♫</span> GERENCIADOR DE MÚSICAS</div>
+        <h1>Gerencie suas <span>músicas</span></h1>
+        <p>Cadastre, encontre, edite e organize suas músicas de forma simples e rápida.</p>
+        <div class="nota-decorativa" aria-hidden="true">♪</div>
+    </section>
+
+    <section class="card cadastro">
+        <div class="titulo-card">
+            <div class="icone-card">＋</div>
+            <div>
+                <h2 id="formTitle">Cadastrar música</h2>
+                <p>Preencha os campos abaixo para adicionar uma nova música.</p>
+            </div>
+        </div>
+
+        <form id="musicaForm">
+            <input type="hidden" id="id">
+
+            <div class="form-grid">
+                <div class="campo">
+                    <label for="nome"><span>♫</span> Nome da música</label>
+                    <input type="text" id="nome" placeholder="Digite o nome da música" required>
+                </div>
+
+                <div class="campo">
+                    <label for="artista"><span>♙</span> Artista</label>
+                    <input type="text" id="artista" placeholder="Digite o artista" required>
+                </div>
+
+                <div class="campo">
+                    <label for="genero"><span>◇</span> Gênero musical</label>
+                    <input type="text" id="genero" placeholder="Ex: Pop, Rock..." required>
+                </div>
+
+                <div class="campo">
+                    <label for="ano"><span>▦</span> Ano de lançamento</label>
+                    <input type="text" id="ano" placeholder="Ex: 2024" required>
+                </div>
+            </div>
+
+            <div class="botoes">
+                <button type="submit" id="btnSalvar" class="botao-principal">
+                    <span>▣</span> Cadastrar música
+                </button>
+                <button type="button" id="btnCancelar" class="secundario" hidden>
+                    <span>↶</span> Cancelar edição
+                </button>
+            </div>
+        </form>
+
+        <div id="mensagem" role="status" aria-live="polite"></div>
+    </section>
+
+    <section class="card busca-card">
+        <div class="titulo-card titulo-busca">
+            <div class="icone-card icone-busca">⌕</div>
+            <div>
+                <h2>Buscar música</h2>
+                <p>Digite o nome da música que deseja encontrar.</p>
+            </div>
+            <span class="dica-busca">✧ Encontre rapidamente a sua música</span>
+        </div>
+
+        <div class="busca">
+            <input type="text" id="buscaNome" placeholder="⌕  Digite o nome da música">
+            <button type="button" id="btnBuscar" class="botao-principal">
+                <span>⌕</span> Buscar
+            </button>
+        </div>
+
+        <div id="resultado">
+            <p class="vazio">
+                <span>♫</span>
+                Pesquise uma música para visualizar seus dados.
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p><span>♫</span> <strong>MusicApp</strong> © 2026 · Sistema de gerenciamento musical</p>
+    <small>Mais música, mais momentos</small>
+</footer>
+
+<script src="./script.js"></script>
+</body>
+</html>

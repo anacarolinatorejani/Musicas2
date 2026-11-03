@@ -4,6 +4,7 @@ package com.debmusic.cadastro_musicas.business;
 import com.debmusic.cadastro_musicas.infrastructure.entitys.Musicas;
 import com.debmusic.cadastro_musicas.infrastructure.repository.MusicasRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MusicasService {
@@ -47,7 +48,7 @@ public class MusicasService {
         repository.save(musicaAtualizada);
     }
 
+    @Transactional
     public void deletarPorNome(String nome) {
         repository.deleteByNome(nome);
-    }
-}
+    }}
